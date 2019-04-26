@@ -1,6 +1,6 @@
 function loadOptions() {
     chrome.storage.sync.get('quickDelay', (quickDelayDays) => {
-        document.getElementById('quick-delay').value = quickDelayDays.quickDelay;
+        document.getElementById('quick-delay').value = quickDelayDays.quickDelay ? quickDelayDays.quickDelay : [1,3,7];
     });
 }
 

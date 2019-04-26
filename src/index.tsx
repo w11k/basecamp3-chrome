@@ -15,7 +15,8 @@ serviceWorker.unregister();
 // wait until base URL from basecamp is detected (triggered by background.js)
 chrome.runtime.onMessage.addListener((msg: IExtensionMessage) => {
   const basecampID: string = msg.basecampID;
-  const options: IExtensionOptions = { ...msg.options, quickDelayDays: parseDelayDayOptionsString(msg.options.quickDelayDays as any as string) };
+  const quickDelayDays: number[] = msg.options.quickDelayDays ? parseDelayDayOptionsString(msg.options.quickDelayDays as any as string) : [1,3,7];
+  const options: IExtensionOptions = { ...msg.options, quickDelayDays };
 
   addFeatures(basecampID, options, todoQuickDelayFeatureID, todoFromMessageFeatureID);
 });
