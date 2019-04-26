@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "W11K Basecamp Extension",
+  "description": "This addon is extending the functionality of \"Basecamp 3\" ",
+  "version": "0.0.1",
+  "browser_action": {},
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["*://3.basecamp.com/*"],
+    "js": ["/static/js/bundle.js"]
+  }],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'"
+}
+
