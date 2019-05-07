@@ -3,6 +3,13 @@
   "name": "W11K Basecamp Extension",
   "description": "This addon is extending the functionality of \"Basecamp 3\" ",
   "version": "0.0.1",
+  "icons": {
+    "16": "img/w11k-icon_16.png",
+    "32": "img/w11k-icon_32.png",
+    "64": "img/w11k-icon_64.png",
+    "128": "img/w11k-icon_128.png",
+    "256": "img/w11k-icon_256.png"
+  },
   "browser_action": {},
   "background": {
     "scripts": ["background.js"],
