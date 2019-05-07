@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "W11K Basecamp Extension",
+  "short_name": "W11K Basecamp",
   "description": "This addon is extending the functionality of \"Basecamp 3\" ",
   "version": "0.0.1",
   "icons": {
