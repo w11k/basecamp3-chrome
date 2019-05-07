@@ -1,7 +1,7 @@
 ## W11K Basecamp Chrome Extension
 
 This addon extends the functionality of "Basecamp 3" by the following features:
-- quick-delay to-dos (by days defined in options)
+- quick-delay to-dos (by days defined in options, in assigments by 1 day)
 - create to-dos directly from messages
 
 ### How-to use

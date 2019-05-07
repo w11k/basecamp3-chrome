@@ -1,4 +1,4 @@
-interface TodoQuickDelayMenuProps {
+interface TodoQuickDelayProps {
   basecampID: string;
   bucketID: string;
   todoID: string;

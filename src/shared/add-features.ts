@@ -1,5 +1,5 @@
 import { addTodoFromMessageFeature } from '../features/todo-from-message/TodoFromMessageInsert';
-import { addTodoQuickDelayFeature } from '../features/todo-quick-delay/TodoQuickDelayInsert';
+import { addTodoQuickDelayFeature, addTodoQuickDelayFeatureForAssigments } from '../features/todo-quick-delay/TodoQuickDelayInsert';
 import { todoFromMessageFeatureID, todoQuickDelayFeatureID } from './feature-IDs';
 
 export function addFeatures(basecampID: string, options: IExtensionOptions, ...features: string[]) {
@@ -9,6 +9,7 @@ export function addFeatures(basecampID: string, options: IExtensionOptions, ...f
 
 export function addFixedDOMFeatures(basecampID: string, options: IExtensionOptions, ...features: string[]) {
   if (features.includes(todoFromMessageFeatureID)) addTodoFromMessageFeature(basecampID);
+  if (features.includes(todoQuickDelayFeatureID)) addTodoQuickDelayFeatureForAssigments(basecampID, options.quickDelayDays);
 }
 
 export function addDynamicDOMFeatures(basecampID: string, options: IExtensionOptions, ...features: string[]) {

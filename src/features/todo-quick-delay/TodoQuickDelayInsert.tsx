@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { todoQuickDelayFeatureID } from '../../shared/feature-IDs';
+import { todoQuickDelayFeatureID, todoQuickDelayFeatureIDForAssigments } from '../../shared/feature-IDs';
 import TodoQuickDelayMenu from './TodoQuickDelayMenu';
+import TodoQuickDelayButton from './TodoQuickDelayButton';
 
 export function addTodoQuickDelayFeature(node: Element, basecampID: string, quickDelayDays: number[]) {
   if (!todoQuickDelayFeatureAddable(node)) return;
@@ -29,4 +30,38 @@ function todoQuickDelayFeatureAddable(node: Element): boolean {
     && node.parentElement!.parentElement!.getAttribute('data-url') !== null
     && node.parentElement!.parentElement!.getAttribute('data-recording-id') !== null
     && node.parentElement!.querySelector('.checkbox .checkbox__content .todo__date') !== null;
+}
+
+export function addTodoQuickDelayFeatureForAssigments(basecampID: string, quickDelayDays: number[]) {
+  const assignmentTodolists: NodeListOf<Element> = document.querySelectorAll('article.todolist--assignments');
+  if (!assignmentTodolists) return;
+
+  assignmentTodolists.forEach((assignmentTodolist: Element) => {
+    const todos: NodeListOf<Element> = assignmentTodolist.querySelectorAll('li.todo');
+    if (!todos) return;
+
+    todos.forEach((todo: Element) => {
+      if (todo.classList.contains('unindented')) todo.classList.remove('unindented');
+
+      const insertEl = todo.querySelector('.indent');
+      if (!insertEl) return;
+
+      const url: string[] = insertEl.querySelector('.checkbox__content')!.getElementsByTagName('a')[0].getAttribute('href')!.split('/');
+      if (!url || url.length < 6) return;
+
+      const bucketID: string = url[3];
+      const todoID: string = url[5];
+
+      if (todo.querySelector(`#${todoQuickDelayFeatureIDForAssigments}-${todoID}`) || !bucketID || !todoID) return;
+
+      const container = document.createElement('div');
+      container.id = `${todoQuickDelayFeatureIDForAssigments}-${todoID}`;
+      insertEl.insertBefore(container, insertEl.childNodes[0]);
+
+      render(
+        <TodoQuickDelayButton basecampID={basecampID} bucketID={bucketID} todoID={todoID} quickDelayDays={quickDelayDays}/>,
+        document.getElementById(`${todoQuickDelayFeatureIDForAssigments}-${todoID}`)
+      );
+    });
+  });
 }
