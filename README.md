@@ -9,3 +9,4 @@ This addon extends the functionality of "Basecamp 3" by the following features:
 2. navigate to chrome://extensions
 3. turn on developer mode
 4. click on "load unpacked" and choose the build folder
+sudo
