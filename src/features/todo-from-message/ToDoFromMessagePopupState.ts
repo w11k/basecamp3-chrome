@@ -1,0 +1,3 @@
+interface TodoFromMessagePopupState {
+    loading : boolean;
+}

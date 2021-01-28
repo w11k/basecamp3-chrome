@@ -2,6 +2,7 @@
   "main.js": "/static/js/bundle.js",
   "main.js.map": "/static/js/bundle.js.map",
   "index.html": "/index.html",
-  "precache-manifest.34c773be2848f628fdc50d8db3254789.js": "/precache-manifest.34c773be2848f628fdc50d8db3254789.js",
-  "service-worker.js": "/service-worker.js"
+  "precache-manifest.c3acd435404e9787823ef5b9a914480d.js": "/precache-manifest.c3acd435404e9787823ef5b9a914480d.js",
+  "service-worker.js": "/service-worker.js",
+  "static/js/bundle.js.LICENSE": "/static/js/bundle.js.LICENSE"
 }
