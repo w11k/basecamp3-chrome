@@ -21,7 +21,7 @@ class TodoFromMessagePopup extends React.Component<TodoFromMessagePopupProps, To
         `https://3.basecamp.com/${this.props.basecampID}/buckets/${bucketID}/todolists/${todolistID}/todos.json`,
         {content}
     ).then((response: AxiosResponse) => {
-      this.navigateToNewTodo(response.data);
+      //this.navigateToNewTodo(response.data);
     }).catch((err) => {
       this.setState({loading: false});
       console.log(err);
@@ -60,13 +60,12 @@ class TodoFromMessagePopup extends React.Component<TodoFromMessagePopupProps, To
     return (
         <div style={{height: '100%', width: '100%', padding: '24px 36px', display: 'flex', flexDirection: 'column'}}>
           {this.state.loading &&
-          <div style={{height: '90%', width: '90%', background: 'white', position: 'absolute', textAlign: 'center', padding: '120px 0'}}>
+          <div style={{height: '90%', width: '86%', background: 'white', opacity: 0.5, position: 'absolute', textAlign: 'center', padding: '143px 0'}}>
             <Loader
                 type="Oval"
                 color="blue"
-                height={100}
-                width={100}
-                timeout={10000}
+                height={60}
+                width={60}
             />
           </div>
           }
