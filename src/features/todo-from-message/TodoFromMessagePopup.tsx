@@ -21,7 +21,7 @@ class TodoFromMessagePopup extends React.Component<TodoFromMessagePopupProps, To
         `https://3.basecamp.com/${this.props.basecampID}/buckets/${bucketID}/todolists/${todolistID}/todos.json`,
         {content}
     ).then((response: AxiosResponse) => {
-      //this.navigateToNewTodo(response.data);
+      this.navigateToNewTodo(response.data);
     }).catch((err) => {
       this.setState({loading: false});
       console.log(err);
