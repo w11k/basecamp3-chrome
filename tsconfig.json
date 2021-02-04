@@ -23,6 +23,9 @@
     "src"
   ],
   "types": [
-    "chrome"
+    "@types/chrome"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
   ]
 }

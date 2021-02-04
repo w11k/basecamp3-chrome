@@ -14,7 +14,7 @@ class TodoFromMessageButton extends React.Component<TodoFromMessageButtonProps> 
     const todolists: TodolistOptionGroup[] = await this.getTodolists();
     const popup: HTMLElement = this.createOrFindPopupContainer();
     render(
-      <TodoFromMessagePopup basecampID={this.props.basecampID} messageID={this.props.messageID} todolistOptions={todolists}/>,
+        <TodoFromMessagePopup basecampID={this.props.basecampID} messageID={this.props.messageID} todolistOptions={todolists}/>,
       popup
     );
   };
