@@ -4,7 +4,7 @@ import { todoQuickDelayFeatureID, todoQuickDelayFeatureIDForAssigments } from '.
 import TodoQuickDelayMenu from './TodoQuickDelayMenu';
 import TodoQuickDelayButton from './TodoQuickDelayButton';
 
-export function addTodoQuickDelayFeature(node: Element, basecampID: string, quickDelayDays: number[]) {
+export function addTodoQuickDelayFeature(node: Element, basecampID: string, quickDelayDays: number[], quickDelayMonths: number[]) {
   if (!todoQuickDelayFeatureAddable(node)) return;
 
   const bucketID: string = node.parentElement!.parentElement!.getAttribute('data-url')!.split('buckets/')[1].split('/')[0];
@@ -14,7 +14,7 @@ export function addTodoQuickDelayFeature(node: Element, basecampID: string, quic
   container.id = todoQuickDelayFeatureID;
   node.getElementsByClassName('action-menu__content')[0].appendChild(container);
   render(
-    <TodoQuickDelayMenu basecampID={basecampID} bucketID={bucketID} todoID={todoID} quickDelayDays={quickDelayDays}/>,
+    <TodoQuickDelayMenu basecampID={basecampID} bucketID={bucketID} todoID={todoID} quickDelayDays={quickDelayDays} quickDelayMonths={quickDelayMonths}/>,
     document.getElementById(todoQuickDelayFeatureID)
   );
 }
@@ -32,7 +32,7 @@ function todoQuickDelayFeatureAddable(node: Element): boolean {
     && node.parentElement!.querySelector('.checkbox .checkbox__content .todo__date') !== null;
 }
 
-export function addTodoQuickDelayFeatureForAssigments(basecampID: string, quickDelayDays: number[]) {
+export function addTodoQuickDelayFeatureForAssigments(basecampID: string, quickDelayDays: number[], quickDelayMonths: number[]) {
   const assignmentTodolists: NodeListOf<Element> = document.querySelectorAll('article.todolist--assignments');
   if (!assignmentTodolists) return;
 
@@ -59,7 +59,7 @@ export function addTodoQuickDelayFeatureForAssigments(basecampID: string, quickD
       insertEl.insertBefore(container, insertEl.childNodes[0]);
 
       render(
-        <TodoQuickDelayButton basecampID={basecampID} bucketID={bucketID} todoID={todoID} quickDelayDays={quickDelayDays}/>,
+        <TodoQuickDelayButton basecampID={basecampID} bucketID={bucketID} todoID={todoID} quickDelayDays={quickDelayDays} quickDelayMonths={quickDelayMonths}/>,
         document.getElementById(`${todoQuickDelayFeatureIDForAssigments}-${todoID}`)
       );
     });
