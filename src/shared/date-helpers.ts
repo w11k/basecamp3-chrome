@@ -1,4 +1,4 @@
-import { addDays, format } from 'date-fns';
+import {addDays, addMonths, format} from 'date-fns';
 
 export function getDateFromString(d: string): Date {
   const array: string[] = d.split('-');
@@ -9,7 +9,7 @@ export function getDateFromString(d: string): Date {
 }
 
 // Feature "TodoQuickDelay"
-
+// Preparing string for adding delay by a days and weeks
 export function getDelayString(d: number): string {
   const prefix: string = d >= 0 ? '+ ' : '- ';
   let value: number = Math.abs(d);
@@ -19,14 +19,29 @@ export function getDelayString(d: number): string {
   return prefix + value + suffix;
 }
 
+// Preparing string for adding delay by a month
+export function getDelayStringMonths(m: number) : string {
+  const prefix: string = m >= 0 ? '+ ' : '- ';
+  let value: number = Math.abs(m);
+  let suffix: string = ' month';
+  if (value > 1) suffix += 's';
+  return prefix + value + suffix;
+}
+
 export function calculateNewDueDate(d: string, delay: number): string {
   const oldDueDate: Date = getDateFromString(d);
-  return format(addDays(oldDueDate, delay),'YYYY-MM-DD');
+  return format(addDays(oldDueDate, delay),'yyyy-MM-dd');
+}
+
+// to calculate new month
+export function calculateNewDueMonth(d: string, delay: number): string {
+  const oldDueDate :Date = getDateFromString(d);
+  return format(addMonths(oldDueDate, delay), 'yyyy-MM-dd');
 }
 
 export function getBasecampFormattedDueDate(d: string): string {
   const date: Date = getDateFromString(d);
-  return format(date, '  ddd, MMM D');
+  return format(date, '  EEE, MMM d');
 }
 
 export function parseDelayDayOptionsString(s: string): number[] {

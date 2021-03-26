@@ -3,4 +3,5 @@ interface TodoQuickDelayProps {
   bucketID: string;
   todoID: string;
   quickDelayDays: number[];
+  quickDelayMonths: number[];
 }

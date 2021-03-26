@@ -16,7 +16,8 @@ serviceWorker.unregister();
 chrome.runtime.onMessage.addListener((msg: IExtensionMessage) => {
   const basecampID: string = msg.basecampID;
   const quickDelayDays: number[] = msg.options.quickDelayDays ? parseDelayDayOptionsString(msg.options.quickDelayDays as any as string) : [1,3,7];
-  const options: IExtensionOptions = { ...msg.options, quickDelayDays };
+  const quickDelayMonths: number[] = [1];
+  const options: IExtensionOptions = { ...msg.options, quickDelayDays, quickDelayMonths };
 
   addFeatures(basecampID, options, todoQuickDelayFeatureID, todoFromMessageFeatureID);
 });
